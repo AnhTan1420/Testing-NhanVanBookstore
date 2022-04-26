@@ -7,11 +7,13 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.maximize_window()
 driver.get("https://nhanvan.vn/")
 
-
 driver.find_element(By.XPATH,"//header/div[@id='header']/div[2]/div[1]/div[1]/div[3]/div[1]/div[3]/a[1]").click()
-driver.find_element(By.NAME,"customer[email]").send_keys("1954052024hien@ou.edu.vn")
+driver.find_element(By.NAME,"customer[email]").send_keys("1954052024hien@ou.edu")
 driver.find_element(By.NAME,"customer[password]").send_keys("17092001")
-driver.find_element(By.XPATH,"//*[@id='customer_login']/div[3]/div[1]/button").click()
+time.sleep(3) #cho nghỉ 3s rồi mới submit, vì khi submit ngay máy chưa tìm được element tiếp theo nên sẽ bị xung đột
+driver.find_element(By.XPATH,"//*[@id='customer_login']/div[3]/div[1]/button").submit()
+TB = driver.find_element(By.XPATH, '//*[@id="customer_login"]/div[1]/ul/li')
+print(TB.text)
 
 time.sleep(3)
 driver.close()
