@@ -7,13 +7,14 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.maximize_window()
 driver.get("https://nhanvan.vn/")
 
-driver.find_element(By.NAME,"q").send_keys("ĐắC NhâN TâM")
-driver.find_element(By.XPATH,"//*[@id='searchsubmit']").submit()
+driver.find_element(By.NAME, "q").send_keys("Dac nhan tam")
+driver.find_element(By.XPATH, "//*[@id='searchsubmit']").click()
 driver.implicitly_wait(7)
-
-results=driver.find_elements(By.CSS_SELECTOR,'.search-list-results .pro-loop.grid-item .product-block .product-detail .box-pro-detail h3')
+results = driver.find_elements(By.CSS_SELECTOR,
+                               '.search-list-results .pro-loop.grid-item .product-block .product-detail '
+                               '.box-pro-detail h3')
 for item in results:
-    content= item.find_element(By.TAG_NAME,'a')
+    content = item.find_element(By.TAG_NAME, 'a')
     print(content.text)
     print(content.get_attribute('href'))
     print('-------------------')

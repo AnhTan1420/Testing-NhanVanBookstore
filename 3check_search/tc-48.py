@@ -7,9 +7,9 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.maximize_window()
 driver.get("https://nhanvan.vn/")
 
-driver.find_element(By.NAME,"q").send_keys("ĐắC NhâN TâM")
-driver.find_element(By.XPATH,"//*[@id='searchsubmit']").submit()
 driver.implicitly_wait(7)
+driver.find_element(By.NAME,"q").send_keys("Đắc nhân")
+driver.find_element(By.XPATH,"//*[@id='searchsubmit']").click()
 
 results=driver.find_elements(By.CSS_SELECTOR,'.search-list-results .pro-loop.grid-item .product-block .product-detail .box-pro-detail h3')
 for item in results:
